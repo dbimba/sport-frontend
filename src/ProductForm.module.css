@@ -1,0 +1,101 @@
+/* ── Обгортка блоку ── */
+.wrap {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+}
+
+/* ── Заголовок ── */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* ── Рядок з інпутами ── */
+.row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.input {
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.input::placeholder {
+  color: #BDBDBD;
+}
+
+.input:focus {
+  border-color: var(--accent);
+}
+
+.inputName    { flex: 2; min-width: 180px; }
+.inputArticle { flex: 1; min-width: 120px; }
+.inputPrice   { width: 130px; }
+
+/* ── URL фото — окремий рядок на всю ширину ── */
+.inputUrl {
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  margin-bottom: 16px;
+  transition: border-color var(--transition);
+}
+
+.inputUrl::placeholder { color: #BDBDBD; }
+.inputUrl:focus        { border-color: var(--accent); }
+
+/* ── Кнопка збереження ── */
+.btnSave {
+  padding: 11px 28px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.btnSave:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.btnSave:active {
+  transform: translateY(0);
+}

@@ -1,0 +1,219 @@
+/* ════════════════════════════════
+   LAYOUT
+════════════════════════════════ */
+.app {
+  min-height: 100vh;
+  background: var(--light);
+}
+
+/* ════════════════════════════════
+   HEADER
+════════════════════════════════ */
+.header {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 40px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 800;
+  color: var(--dark);
+  letter-spacing: -0.02em;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.userEmail {
+  font-size: 14px;
+  color: var(--mid);
+}
+
+.userEmail strong {
+  color: var(--dark);
+}
+
+.btnLogout {
+  padding: 8px 18px;
+  background: transparent;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mid);
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.btnLogout:hover {
+  border-color: var(--dark);
+  color: var(--dark);
+}
+
+/* ════════════════════════════════
+   MAIN CONTAINER
+════════════════════════════════ */
+.main {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 40px 60px;
+}
+
+/* ════════════════════════════════
+   FILTERS BAR
+════════════════════════════════ */
+.filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  background: var(--white);
+  padding: 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+}
+
+.searchInput {
+  flex: 1;
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.searchInput::placeholder {
+  color: #BDBDBD;
+}
+
+.searchInput:focus {
+  border-color: var(--accent);
+}
+
+.categorySelect {
+  padding: 11px 16px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--dark);
+  background: var(--white);
+  outline: none;
+  cursor: pointer;
+  min-width: 190px;
+  transition: border-color var(--transition);
+}
+
+.categorySelect:focus {
+  border-color: var(--accent);
+}
+
+.btnSearch {
+  padding: 11px 26px;
+  background: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  transition: background var(--transition);
+}
+
+.btnSearch:hover {
+  background: var(--accent-hover);
+}
+
+/* ════════════════════════════════
+   SECTION HEADING
+════════════════════════════════ */
+.sectionHead {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.sectionCount {
+  font-size: 14px;
+  color: var(--mid);
+}
+
+/* ════════════════════════════════
+   PRODUCTS GRID
+════════════════════════════════ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+/* ════════════════════════════════
+   EMPTY STATE
+════════════════════════════════ */
+.empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--mid);
+  font-size: 16px;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media (max-width: 768px) {
+  .header {
+    padding: 0 20px;
+  }
+
+  .main {
+    padding: 20px 16px 40px;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+  }
+
+  .categorySelect {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .searchInput {
+    width: 100%;
+  }
+
+  .btnSearch {
+    width: 100%;
+    justify-content: center;
+  }
+}

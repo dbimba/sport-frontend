@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Кольори */
+  --accent:        #FF5E00;
+  --accent-hover:  #E05200;
+  --dark:          #111111;
+  --mid:           #6B6B6B;
+  --light:         #F4F4F4;
+  --border:        #E8E8E8;
+  --white:         #FFFFFF;
+  --danger:        #E53E3E;
+  --danger-hover:  #C53030;
+
+  /* Тіні */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);
+
+  /* Форми */
+  --radius:    12px;
+  --radius-sm: 8px;
+
+  /* Анімація */
+  --transition: 0.2s ease;
+
+  /* Шрифти */
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--light);
+  color: var(--dark);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+button  { font-family: var(--font-body); cursor: pointer; }
+input   { font-family: var(--font-body); }
+select  { font-family: var(--font-body); }
