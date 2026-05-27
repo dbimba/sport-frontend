@@ -14,7 +14,6 @@
   box-shadow: var(--shadow-md);
 }
 
-/* ── Фото ── */
 .imageWrap {
   aspect-ratio: 1 / 1;
   background: #F9F9F9;
@@ -41,7 +40,6 @@
   color: var(--border);
 }
 
-/* ── Текстовий блок ── */
 .body {
   padding: 16px 16px 8px;
   flex: 1;
@@ -81,7 +79,6 @@
   color: var(--mid);
 }
 
-/* ── Кнопки ── */
 .footer {
   padding: 10px 16px 16px;
 }

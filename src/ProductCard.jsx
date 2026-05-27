@@ -3,8 +3,6 @@ import styles from './ProductCard.module.css';
 export default function ProductCard({ product, isAdmin, onBuy, onDelete }) {
   return (
     <div className={styles.card}>
-
-      {/* Фото */}
       <div className={styles.imageWrap}>
         {product.image_url ? (
           <img
@@ -16,8 +14,6 @@ export default function ProductCard({ product, isAdmin, onBuy, onDelete }) {
           <div className={styles.noImage}>📦</div>
         )}
       </div>
-
-      {/* Інфо */}
       <div className={styles.body}>
         <p className={styles.article}>{product.article}</p>
         <h3 className={styles.name}>{product.name}</h3>
@@ -26,8 +22,6 @@ export default function ProductCard({ product, isAdmin, onBuy, onDelete }) {
           <span> грн</span>
         </p>
       </div>
-
-      {/* Кнопка дії */}
       <div className={styles.footer}>
         {isAdmin ? (
           <button

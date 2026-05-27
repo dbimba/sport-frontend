@@ -7,7 +7,6 @@
 }
 
 :root {
-  /* Кольори */
   --accent:        #FF5E00;
   --accent-hover:  #E05200;
   --dark:          #111111;
@@ -18,19 +17,15 @@
   --danger:        #E53E3E;
   --danger-hover:  #C53030;
 
-  /* Тіні */
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.10);
   --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.18);
 
-  /* Форми */
   --radius:    12px;
   --radius-sm: 8px;
 
-  /* Анімація */
   --transition: 0.2s ease;
 
-  /* Шрифти */
   --font-display: 'Syne', sans-serif;
   --font-body:    'DM Sans', sans-serif;
 }

@@ -1,75 +1,77 @@
 import { useState, useEffect } from 'react';
 import { getProducts, deleteProduct, logoutUser, createTransaction } from './api';
 import ProductForm from './ProductForm';
-import AuthForm   from './AuthForm';
+import AuthForm    from './AuthForm';
 import ProductCard from './ProductCard';
 import Modal       from './Modal';
+import StatsPanel  from './StatsPanel';
+import OrdersPanel from './OrdersPanel';
 import styles from './App.module.css';
 
+const CATEGORIES = [
+  { id: 1, name: 'Протеїни' },
+  { id: 2, name: 'Амінокислоти та Креатин' },
+  { id: 3, name: 'Передтренувальні комплекси' },
+  { id: 4, name: 'Вітаміни та БАДи' },
+  { id: 5, name: 'Здорове харчування та Снеки' },
+];
+
 function App() {
-  // ── Стейт (нічого не змінювалось, крім selectedProduct) ──────────────
-  const [products,         setProducts]         = useState([]);
-  const [search,           setSearch]           = useState('');
-  const [categoryId,       setCategoryId]       = useState('');
-  const [isAuthenticated,  setIsAuthenticated]  = useState(!!localStorage.getItem('token'));
-  const [userEmail,        setUserEmail]        = useState(localStorage.getItem('email'));
-  const [selectedProduct,  setSelectedProduct]  = useState(null); // null = модал закритий
+  const [products,        setProducts]        = useState([]);
+  const [search,          setSearch]          = useState('');
+  const [categoryId,      setCategoryId]      = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+  const [userEmail,       setUserEmail]       = useState(localStorage.getItem('email'));
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   const adminEmail = 'admin@gmail.com';
   const isAdmin    = userEmail === adminEmail;
 
-  // ── API: завантаження товарів (без змін) ─────────────────────────────
   const fetchProducts = async () => {
     try {
       const response = await getProducts({ search, category_id: categoryId });
       setProducts(response.data);
     } catch (error) {
-      console.error("Помилка при завантаженні товарів:", error);
+      console.error('Помилка при завантаженні товарів:', error);
     }
   };
 
-  // ── handleBuy: рефакторинг — більше не читаємо DOM через getElementById
-  //    Тепер file і qty приходять безпосередньо з Modal ──────────────────
   const handleBuy = async (productId, currentPrice, file, qty) => {
     if (!file) {
-      alert("Будь ласка, завантажте скріншот чека про оплату!");
+      alert('Будь ласка, завантажте скріншот чека про оплату!');
       return;
     }
-
     const formData = new FormData();
-    formData.append('product_id',    productId);
-    formData.append('quantity',      qty || 1);
+    formData.append('product_id',     productId);
+    formData.append('quantity',       qty || 1);
     formData.append('price_per_unit', currentPrice);
-    formData.append('document',      file);
-
+    formData.append('document',       file);
     try {
       await createTransaction(formData);
-      alert("Оплата успішна! Чек відправлено на перевірку.");
-      setSelectedProduct(null); // закриваємо модал після успіху
+      alert('Оплата успішна! Чек відправлено на перевірку.');
+      setSelectedProduct(null);
     } catch (error) {
-      console.error("Помилка транзакції:", error);
-      alert("Не вдалося завершити покупку. Перевір консоль.");
+      console.error('Помилка транзакції:', error);
+      alert('Не вдалося завершити покупку. Перевір консоль.');
     }
   };
 
-  // ── handleDelete (без змін) ───────────────────────────────────────────
   const handleDelete = async (id) => {
-    if (!window.confirm("Дійсно видалити цей товар?")) return;
+    if (!window.confirm('Дійсно видалити цей товар?')) return;
     try {
       await deleteProduct(id);
       fetchProducts();
     } catch (error) {
-      console.error("Помилка при видаленні:", error);
-      alert("Помилка видалення. Перевір консоль.");
+      console.error('Помилка при видаленні:', error);
+      alert('Помилка видалення. Перевір консоль.');
     }
   };
 
-  // ── handleLogout (без змін) ───────────────────────────────────────────
   const handleLogout = async () => {
     try {
       await logoutUser();
     } catch (error) {
-      console.error("Помилка при виході", error);
+      console.error('Помилка при виході', error);
     } finally {
       localStorage.removeItem('token');
       localStorage.removeItem('email');
@@ -78,12 +80,10 @@ function App() {
     }
   };
 
-  // ── useEffect (без змін) ──────────────────────────────────────────────
   useEffect(() => {
     if (isAuthenticated) fetchProducts();
   }, [isAuthenticated]);
 
-  // ── Сторінка авторизації ──────────────────────────────────────────────
   if (!isAuthenticated) {
     return (
       <AuthForm onAuthSuccess={(email) => {
@@ -93,7 +93,6 @@ function App() {
     );
   }
 
-  // ── Головна сторінка ──────────────────────────────────────────────────
   return (
     <div className={styles.app}>
 
@@ -115,8 +114,14 @@ function App() {
       {/* ─── Main ─── */}
       <main className={styles.main}>
 
-        {/* Форма додавання товару — тільки для адміна */}
+        {/* Форма додавання товару — тільки адмін */}
         {isAdmin && <ProductForm onProductAdded={fetchProducts} />}
+
+        {/* Аналітика складу — тільки адмін */}
+        {isAdmin && <StatsPanel products={products} />}
+
+        {/* Панель замовлень — тільки адмін */}
+        {isAdmin && <OrdersPanel />}
 
         {/* Фільтри */}
         <div className={styles.filters}>
@@ -134,10 +139,9 @@ function App() {
             className={styles.categorySelect}
           >
             <option value="">Всі категорії</option>
-            <option value="1">Протеїни</option>
-            <option value="2">Креатин</option>
-            <option value="3">Вітаміни</option>
-            <option value="4">Передтреники</option>
+            {CATEGORIES.map((cat) => (
+              <option key={cat.id} value={cat.id}>{cat.name}</option>
+            ))}
           </select>
           <button onClick={fetchProducts} className={styles.btnSearch}>
             🔍 Знайти
@@ -162,7 +166,7 @@ function App() {
                 key={product.id}
                 product={product}
                 isAdmin={isAdmin}
-                onBuy={setSelectedProduct}   // клік "Купити" → відкриває модал
+                onBuy={setSelectedProduct}
                 onDelete={handleDelete}
               />
             ))

@@ -1,4 +1,3 @@
-/* ── Фон (overlay) ── */
 .overlay {
   position: fixed;
   inset: 0;
@@ -18,7 +17,6 @@
   to   { opacity: 1; }
 }
 
-/* ── Саме вікно ── */
 .modal {
   background: var(--white);
   border-radius: 16px;
@@ -35,7 +33,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Хрестик ── */
 .closeBtn {
   position: absolute;
   top: 16px;
@@ -58,7 +55,6 @@
   color: var(--dark);
 }
 
-/* ── Превʼю товару ── */
 .productPreview {
   display: flex;
   align-items: center;
@@ -113,14 +109,12 @@
   margin-top: 6px;
 }
 
-/* ── Розділювач ── */
 .divider {
   height: 1px;
   background: var(--border);
   margin-bottom: 24px;
 }
 
-/* ── Форма ── */
 .form {
   display: flex;
   flex-direction: column;
@@ -161,7 +155,6 @@
   border-color: var(--accent);
 }
 
-/* ── Завантаження файлу ── */
 .fileLabel {
   display: flex;
   align-items: center;
@@ -171,7 +164,7 @@
 }
 
 .fileInput {
-  display: none; /* приховуємо стандартний інпут */
+  display: none;
 }
 
 .fileBtn {
@@ -203,7 +196,6 @@
   max-width: 180px;
 }
 
-/* ── Кнопки дій ── */
 .actions {
   display: flex;
   gap: 12px;

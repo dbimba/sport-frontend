@@ -1,0 +1,246 @@
+.panel {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.titleWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon { font-size: 18px; line-height: 1; }
+
+.title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.totalBadge {
+  font-size: 12px;
+  color: var(--mid);
+  background: var(--light);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+
+.counters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.counter {
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 4px 12px;
+  border: 1px solid transparent;
+}
+
+.counterPending   { background: #FFF7ED; color: #C2410C; border-color: #FED7AA; }
+.counterConfirmed { background: #F0FDF4; color: #15803D; border-color: #BBF7D0; }
+.counterRejected  { background: #FEF2F2; color: #B91C1C; border-color: #FECACA; }
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 48px;
+  color: var(--mid);
+  font-size: 14px;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 48px;
+  color: var(--mid);
+}
+
+.emptyIcon { font-size: 2.5rem; }
+.empty p   { font-size: 15px; }
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  min-width: 760px;
+}
+
+.table thead tr {
+  background: var(--light);
+  border-bottom: 1px solid var(--border);
+}
+
+.table th {
+  padding: 11px 14px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mid);
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background var(--transition);
+}
+
+.table tbody tr:last-child { border-bottom: none; }
+.table tbody tr:hover      { background: #FAFAFA; }
+
+.table td {
+  padding: 13px 14px;
+  color: var(--dark);
+  vertical-align: middle;
+}
+
+.rowUpdating {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.idCell {
+  font-size: 12px;
+  color: var(--mid);
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.userCell, .productCell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName, .productName     { font-weight: 600; color: var(--dark); }
+.userEmail, .productArticle { font-size: 11px; color: var(--mid); }
+
+.centerCell { text-align: center; }
+
+.priceCell {
+  font-family: var(--font-display);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.dateCell {
+  font-size: 12px;
+  color: var(--mid);
+  white-space: nowrap;
+}
+
+.receiptLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 4px 10px;
+  border: 1px solid #FED7AA;
+  border-radius: 6px;
+  background: #FFF7ED;
+  transition: background var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+.receiptLink:hover { background: #FFEDD5; border-color: var(--accent); }
+
+.noReceipt { color: var(--border); font-size: 16px; }
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.pending   { background: #FFF7ED; color: #C2410C; border: 1px solid #FED7AA; }
+.confirmed { background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0; }
+.rejected  { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+
+.actions {
+  display: flex;
+  gap: 6px;
+}
+
+.btnConfirm, .btnReject, .btnReset, .btnDelete {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+  cursor: pointer;
+}
+
+.btnConfirm { background: #F0FDF4; color: #15803D; border: 1px solid #BBF7D0; }
+.btnConfirm:hover:not(:disabled) { background: #15803D; color: var(--white); transform: translateY(-1px); }
+
+.btnReject  { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+.btnReject:hover:not(:disabled)  { background: #B91C1C; color: var(--white);  transform: translateY(-1px); }
+
+.btnReset   { background: var(--light); color: var(--mid); border: 1px solid var(--border); }
+.btnReset:hover:not(:disabled)   { background: var(--border); color: var(--dark); }
+
+/* ── Кнопка видалення відхиленого ── */
+.btnDelete  { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+.btnDelete:hover:not(:disabled)  { background: #B91C1C; color: var(--white);  transform: translateY(-1px); }
+
+.btnConfirm:disabled,
+.btnReject:disabled,
+.btnReset:disabled,
+.btnDelete:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

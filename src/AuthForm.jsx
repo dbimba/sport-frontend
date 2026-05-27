@@ -34,13 +34,9 @@ export default function AuthForm({ onAuthSuccess }) {
 
   return (
     <div className={styles.page}>
-
-      {/* Логотип */}
       <div className={styles.logo}>
         Sport<span>Nutrition</span>
       </div>
-
-      {/* Картка */}
       <div className={styles.card}>
         <h2 className={styles.title}>
           {isLogin ? 'Вхід до акаунту' : 'Реєстрація'}

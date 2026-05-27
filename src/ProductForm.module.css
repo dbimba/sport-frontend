@@ -1,4 +1,3 @@
-/* ── Обгортка блоку ── */
 .wrap {
   background: var(--white);
   border: 1px solid var(--border);
@@ -8,7 +7,6 @@
   margin-bottom: 28px;
 }
 
-/* ── Заголовок ── */
 .header {
   display: flex;
   align-items: center;
@@ -31,7 +29,6 @@
   color: var(--dark);
 }
 
-/* ── Рядок з інпутами ── */
 .row {
   display: flex;
   gap: 12px;
@@ -50,36 +47,34 @@
   transition: border-color var(--transition);
 }
 
-.input::placeholder {
-  color: #BDBDBD;
-}
-
-.input:focus {
-  border-color: var(--accent);
-}
+.input::placeholder { color: #BDBDBD; }
+.input:focus        { border-color: var(--accent); }
 
 .inputName    { flex: 2; min-width: 180px; }
 .inputArticle { flex: 1; min-width: 120px; }
 .inputPrice   { width: 130px; }
 
-/* ── URL фото — окремий рядок на всю ширину ── */
 .inputUrl {
-  width: 100%;
+  flex: 1;
+  min-width: 200px;
+}
+
+.select {
   padding: 11px 16px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
   font-size: 14px;
+  font-family: var(--font-body);
   color: var(--dark);
   background: var(--white);
   outline: none;
-  margin-bottom: 16px;
+  cursor: pointer;
+  min-width: 220px;
   transition: border-color var(--transition);
 }
 
-.inputUrl::placeholder { color: #BDBDBD; }
-.inputUrl:focus        { border-color: var(--accent); }
+.select:focus { border-color: var(--accent); }
 
-/* ── Кнопка збереження ── */
 .btnSave {
   padding: 11px 28px;
   background: var(--accent);

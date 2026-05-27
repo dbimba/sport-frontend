@@ -7,14 +7,12 @@ export default function Modal({ product, onClose, onConfirm }) {
   const [fileName, setFileName] = useState('');
   const overlayRef              = useRef(null);
 
-  // Закрити по кнопці Escape
   useEffect(() => {
     const handleKey = (e) => { if (e.key === 'Escape') onClose(); };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [onClose]);
 
-  // Закрити по кліку на фон
   const handleOverlayClick = (e) => {
     if (e.target === overlayRef.current) onClose();
   };
@@ -25,7 +23,6 @@ export default function Modal({ product, onClose, onConfirm }) {
   };
 
   const handleSubmit = () => {
-    // Передаємо file та qty вгору в App.jsx → handleBuy
     onConfirm(product.id, product.current_price, file, qty);
   };
 
@@ -33,10 +30,8 @@ export default function Modal({ product, onClose, onConfirm }) {
     <div className={styles.overlay} ref={overlayRef} onClick={handleOverlayClick}>
       <div className={styles.modal}>
 
-        {/* Хрестик */}
         <button className={styles.closeBtn} onClick={onClose} aria-label="Закрити">✕</button>
 
-        {/* Шапка: превʼю товару */}
         <div className={styles.productPreview}>
           {product.image_url ? (
             <img src={product.image_url} alt={product.name} className={styles.productImg} />
@@ -51,12 +46,8 @@ export default function Modal({ product, onClose, onConfirm }) {
             </p>
           </div>
         </div>
-
         <div className={styles.divider} />
-
-        {/* Форма */}
         <div className={styles.form}>
-
           <div className={styles.field}>
             <label className={styles.label}>Кількість</label>
             <input
@@ -84,10 +75,8 @@ export default function Modal({ product, onClose, onConfirm }) {
               </span>
             </label>
           </div>
-
         </div>
-
-        {/* Кнопки */}
+        
         <div className={styles.actions}>
           <button className={styles.btnCancel} onClick={onClose}>Скасувати</button>
           <button className={styles.btnConfirm} onClick={handleSubmit}>
